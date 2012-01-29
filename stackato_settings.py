@@ -5,9 +5,11 @@ import os
 STACKATO = 'VCAP_SERVICES' in os.environ
 
 if STACKATO:
-    EXTRA_INSTALLED_APPS = (
-        'django_stackato',
-        )
+    # django_stackato is not needed anymore
+    # now we can just run "stackato run python manage.py createsuperuser ..."
+    # EXTRA_INSTALLED_APPS = (
+    #     'django_stackato',
+    #     )
 
     import json
     vcap_services = json.loads(os.environ['VCAP_SERVICES'])
@@ -67,15 +69,3 @@ if STACKATO:
 
     except KeyError:
         pass
-
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': 'local_sqlite3.db',                      # Or path to database file if using sqlite3.
-            'USER': '',                      # Not used with sqlite3.
-            'PASSWORD': '',                  # Not used with sqlite3.
-            'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-            'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
-            }
-        }
