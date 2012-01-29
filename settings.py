@@ -6,8 +6,6 @@ TEMPLATE_DEBUG = DEBUG
 import os, sys, logging
 
 ROOT_PATH = os.path.dirname(__file__)
-sys.path.append(ROOT_PATH+'/lib')
-
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -105,3 +103,14 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'polls',
 )
+
+# add these lines to the bottom of your settings.pu
+# which will load the Stackato specific settings
+
+try:
+    from stackato_settings import *
+    if locals().has_key('EXTRA_INSTALLED_APPS'):
+        INSTALLED_APPS = EXTRA_INSTALLED_APPS + INSTALLED_APPS
+
+except ImportError:
+    pass
