@@ -5,11 +5,10 @@ import os
 STACKATO = 'VCAP_SERVICES' in os.environ
 
 if STACKATO:
-    # django_stackato is not needed anymore
-    # now we can just run "stackato run python manage.py createsuperuser ..."
-    # EXTRA_INSTALLED_APPS = (
-    #     'django_stackato',
-    #     )
+    # django_stackato makes it easy to set the superuser password
+    EXTRA_INSTALLED_APPS = (
+        'django_stackato',
+        )
 
     import json
     vcap_services = json.loads(os.environ['VCAP_SERVICES'])
