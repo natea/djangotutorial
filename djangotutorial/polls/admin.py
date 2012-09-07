@@ -1,5 +1,5 @@
-from mysite.polls.models import Poll
-from mysite.polls.models import Choice
+from djangotutorial.polls.models import Poll
+from djangotutorial.polls.models import Choice
 from django.contrib import admin
 
 class ChoiceInline(admin.TabularInline):
