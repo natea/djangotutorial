@@ -3,3 +3,4 @@ dj-database-url
 psycopg2
 MySQL-python
 South
+-e git+git://github.com/natea/django-deployer.git#egg=django-deployer
